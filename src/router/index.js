@@ -56,6 +56,19 @@ export const constantRoutes = [
         meta: { title: '首页', icon: 'dashboard', affix: true }
       }
     ]
+  },
+  {
+    path: '/table',
+    component: Layout,
+    redirect: '/table/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/table/complex-table'),
+        name: 'Dashboard',
+        meta: { title: '表格', icon: 'dashboard', affix: true }
+      }
+    ]
   }
 ]
 

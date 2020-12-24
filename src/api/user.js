@@ -5,7 +5,7 @@ export function login(data) {
   // 密码需要md5加密
   data.password = md5(data.password)
   return request({
-    url: '/admin/authentication/login',
+    url: '/ums/authentication/login',
     method: 'post',
     data
   })
@@ -13,14 +13,14 @@ export function login(data) {
 
 export function getInfo(token) {
   return request({
-    url: '/admin/authentication/info',
+    url: '/ums/authentication/info',
     method: 'get'
   })
 }
 
 export function logout() {
   return request({
-    url: '/admin/authentication/logout',
+    url: '/ums/authentication/logout',
     method: 'post'
   })
 }
