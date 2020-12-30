@@ -1,5 +1,6 @@
 import request from '@/utils/request'
 import md5 from 'js-md5'
+
 export function adminList(query) {
   return request({
     url: '/ums/admin/list',
