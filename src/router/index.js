@@ -97,6 +97,13 @@ export const asyncRoutes = [
         component: () => import('@/views/ums/role/index'),
         meta: { title: '角色列表', icon: 'ums-role' },
         hidden: true
+      },
+      {
+        path: 'menu',
+        name: 'menu',
+        component: () => import('@/views/ums/menu/index'),
+        meta: { title: '菜单列表', icon: 'ums-menu' },
+        hidden: true
       }
     ]
   },
