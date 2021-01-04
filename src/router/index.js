@@ -104,6 +104,20 @@ export const asyncRoutes = [
         component: () => import('@/views/ums/menu/index'),
         meta: { title: '菜单列表', icon: 'ums-menu' },
         hidden: true
+      },
+      {
+        path: 'resource',
+        name: 'resource',
+        component: () => import('@/views/ums/resource/index'),
+        meta: { title: '菜单列表', icon: 'ums-resource' },
+        hidden: true
+      },
+      {
+        path: 'resourceCategory',
+        name: 'resourceCategory',
+        component: () => import('@/views/ums/resource/categoryList'),
+        meta: { title: '资源分类' },
+        hidden: true
       }
     ]
   },

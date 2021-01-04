@@ -2,7 +2,7 @@
   <div class="app-container">
     <!-- 搜索 -->
     <div class="filter-container">
-      <el-input v-model="listQuery.name" placeholder="名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      <el-input v-model="listQuery.name" clearable placeholder="名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
 
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         搜索
@@ -273,7 +273,7 @@ export default {
     },
     // 处理删除
     handleDelete(row) {
-      this.$confirm('是否要删除该用户?', '提示', {
+      this.$confirm('是否要删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
