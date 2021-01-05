@@ -33,3 +33,11 @@ export function changeRole(data) {
     data
   })
 }
+
+export function allocMenu(data) {
+  return request({
+    url: '/ums/role/allocMenu',
+    method: 'post',
+    data
+  })
+}

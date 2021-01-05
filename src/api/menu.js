@@ -8,6 +8,14 @@ export function menuList(query) {
   })
 }
 
+export function menuTreeList(query) {
+  return request({
+    url: '/ums/menu/treeList',
+    method: 'get',
+    params: query
+  })
+}
+
 export function updateMenuHidden(data) {
   return request({
     url: '/ums/menu/updateHidden',
