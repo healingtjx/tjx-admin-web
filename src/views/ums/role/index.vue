@@ -64,7 +64,7 @@
           <el-button
             size="mini"
             type="text"
-            @click="handleSelectRole(scope.row)"
+            @click="handleToAllocMenu(scope.row)"
           >分配菜单
           </el-button>
           <el-button
@@ -257,7 +257,13 @@ export default {
       this.$nextTick(() => {
         this.$refs['dataForm'].clearValidate()
       })
+    },
+    // 处理分配菜单
+    handleToAllocMenu(row) {
+      console.log(row)
+      this.$router.push({ name: 'allocMenu', query: { roleId: row.id }})
     }
   }
+
 }
 </script>

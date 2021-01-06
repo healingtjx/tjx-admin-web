@@ -37,6 +37,10 @@ export default {
     }
   },
   created() {
+    const roleId = this.$route.query.roleId
+    if (roleId) {
+      this.listQuery.roleId = roleId
+    }
     this.getList()
   },
   methods: {
