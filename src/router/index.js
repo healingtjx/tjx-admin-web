@@ -99,10 +99,10 @@ export const asyncRoutes = [
         hidden: true
       },
       {
-        path: 'allocMenu',
-        name: 'allocMenu',
-        component: () => import('@/views/ums/role/allocMenu'),
-        meta: { title: '分配菜单' },
+        path: 'alloc',
+        name: 'alloc',
+        component: () => import('@/views/ums/role/alloc'),
+        meta: { title: '分配权限' },
         hidden: true
       },
       // {

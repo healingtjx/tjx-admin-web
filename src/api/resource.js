@@ -8,6 +8,14 @@ export function resourceList(query) {
   })
 }
 
+export function resourceTreeList(query) {
+  return request({
+    url: '/ums/resource/treeList',
+    method: 'get',
+    params: query
+  })
+}
+
 export function deleteResource(id) {
   return request({
     url: '/ums/resource/delete',

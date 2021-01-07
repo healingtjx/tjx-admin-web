@@ -41,3 +41,11 @@ export function allocMenu(data) {
     data
   })
 }
+
+export function allocResource(data) {
+  return request({
+    url: '/ums/role/allocResource',
+    method: 'post',
+    data
+  })
+}

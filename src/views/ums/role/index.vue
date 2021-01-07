@@ -64,13 +64,13 @@
           <el-button
             size="mini"
             type="text"
-            @click="handleToAllocMenu(scope.row)"
+            @click="handleToAlloc(scope.row,1)"
           >分配菜单
           </el-button>
           <el-button
             size="mini"
             type="text"
-            @click="handleSelectRole(scope.row)"
+            @click="handleToAlloc(scope.row,2)"
           >分配资源
           </el-button>
           <el-button
@@ -258,10 +258,9 @@ export default {
         this.$refs['dataForm'].clearValidate()
       })
     },
-    // 处理分配菜单
-    handleToAllocMenu(row) {
-      console.log(row)
-      this.$router.push({ name: 'allocMenu', query: { roleId: row.id }})
+    // 处理分配 type 1 分配菜单 2 分配资源
+    handleToAlloc(row, type) {
+      this.$router.push({ name: 'alloc', query: { roleId: row.id, type: type }})
     }
   }
 
