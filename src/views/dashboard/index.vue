@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name: test</div>
+    <div class="dashboard-text">欢迎使用tjx系统</div>
   </div>
 </template>
 

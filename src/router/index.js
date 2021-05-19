@@ -20,7 +20,7 @@ export const constantRoutes = [
     children: [
       {
         path: '/redirect/:path(.*)',
-        component: () => import('@/views/redirect/index')
+        component: () => import('@/views/common/redirect')
       }
     ]
   },
@@ -30,18 +30,13 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '/auth-redirect',
-    component: () => import('@/views/login/auth-redirect'),
-    hidden: true
-  },
-  {
     path: '/404',
-    component: () => import('@/views/error-page/404'),
+    component: () => import('@/views/common/404'),
     hidden: true
   },
   {
     path: '/401',
-    component: () => import('@/views/error-page/401'),
+    component: () => import('@/views/common/401'),
     hidden: true
   },
   {
@@ -54,19 +49,6 @@ export const constantRoutes = [
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
         meta: { title: '首页', icon: 'dashboard', affix: true }
-      }
-    ]
-  },
-  {
-    path: '/table',
-    component: Layout,
-    redirect: '/table/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/table/complex-table'),
-        name: 'Dashboard',
-        meta: { title: '表格', icon: 'dashboard', affix: true }
       }
     ]
   }
@@ -131,6 +113,22 @@ export const asyncRoutes = [
         name: 'resourceCategory',
         component: () => import('@/views/ums/resource/categoryList'),
         meta: { title: '资源分类' },
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/config',
+    component: Layout,
+    redirect: '/config/upload',
+    name: 'config',
+    meta: { title: '系统设置', icon: 'config' },
+    children: [
+      {
+        path: 'upload',
+        name: 'upload',
+        component: () => import('@/views/sys/config/upload'),
+        meta: { title: '文件上传', icon: 'config-upload' },
         hidden: true
       }
     ]

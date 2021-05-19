@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import { deleteResourceCategory, changeResourceCategory, resourceCategoryList } from '@/api/resource'
+import { deleteResourceCategory, changeResourceCategory, resourceCategoryList } from '@/api/ums/resource'
 import waves from '@/directive/waves' // waves directive
 import Pagination from '@/components/Pagination' // 基于el-pagination的二级包
 export default {

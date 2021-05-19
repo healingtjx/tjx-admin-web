@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import { menuTreeList } from '@/api/menu'
-import { resourceTreeList } from '@/api/resource'
+import { menuTreeList } from '@/api/ums/menu'
+import { resourceTreeList } from '@/api/ums/resource'
 
-import { allocMenu, allocResource } from '@/api/role'
+import { allocMenu, allocResource } from '@/api/ums/role'
 export default {
   name: 'ComplexTable',
   filters: {},

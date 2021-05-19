@@ -121,7 +121,7 @@
 </template>
 
 <script>
-import { roleList, updateRoleStatus, deleteRole, changeRole } from '@/api/role'
+import { roleList, updateRoleStatus, deleteRole, changeRole } from '@/api/ums/role'
 
 import waves from '@/directive/waves' // waves directive
 import Pagination from '@/components/Pagination' // 基于el-pagination的二级包

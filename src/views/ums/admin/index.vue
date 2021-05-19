@@ -129,7 +129,7 @@
 </template>
 
 <script>
-import { adminList, updateAdminStatus, changeAdmin, deleteAdmin } from '@/api/admin'
+import { adminList, updateAdminStatus, changeAdmin, deleteAdmin } from '@/api/ums/admin'
 import { validEmail } from '@/utils/validate'
 
 import waves from '@/directive/waves' // waves directive
