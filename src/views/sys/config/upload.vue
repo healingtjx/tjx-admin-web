@@ -94,9 +94,20 @@
         </el-form>
       </el-tab-pane>
     </el-tabs>
-    <el-row style="text-align:center">
+    <el-row class="center">
       <el-button type="primary" align="center" @click="handleSave">保存</el-button>
     </el-row>
+    <el-divider content-position="left">上传测试</el-divider>
+
+    <el-upload
+      drag
+      action="http://localhost:8080/upload/file/img"
+      multiple
+    >
+      <i class="el-icon-upload" />
+      <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+      <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+    </el-upload>
   </div>
 </template>
 
@@ -192,3 +203,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .center{
+    text-align:center
+  }
+</style>
