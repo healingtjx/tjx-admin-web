@@ -97,7 +97,7 @@
     <el-row class="center">
       <el-button type="primary" align="center" @click="handleSave">保存</el-button>
     </el-row>
-    <el-divider content-position="left">上传测试</el-divider>
+    <el-divider content-position="left">{{ defaultMsg }}</el-divider>
 
     <el-upload
       drag
@@ -108,14 +108,22 @@
       <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
       <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
     </el-upload>
+    <Editor ref="Editor" :default-msg="defaultMsg" :config="config" />
   </div>
 </template>
 
 <script>
+import Editor from '@/components/Editor/index'
 import { saveConfig, configInfo } from '@/api/sys/config'
 export default {
+  components: { Editor },
   data() {
     return {
+      defaultMsg: '这里是UE测试',
+      config: {
+        initialFrameWidth: null,
+        initialFrameHeight: 350
+      },
       activeName: '0',
       select: {
         first: true,
@@ -156,6 +164,7 @@ export default {
        * 加载配置信息
        */
     loadConfig() {
+      console.log(Editor)
       configInfo().then((response) => {
         var data = response.data
         this.form = data
@@ -189,9 +198,10 @@ export default {
       this.select = select
     },
     /**
-     * 处理保存
+     * 处理保存123
      */
     handleSave() {
+      this.getUEContent()
       var form = this.form
       saveConfig(form).then((respose) => {
         this.$message({
@@ -199,6 +209,15 @@ export default {
           type: 'success'
         })
       })
+    },
+    getUEContent() {
+      const content = this.$refs.Editor.getUEContent()
+      this.$notify({
+        title: '获取成功，可在控制台查看！',
+        message: content,
+        type: 'success'
+      })
+      this.$data.defaultMsg = content
     }
   }
 }
