@@ -28,6 +28,11 @@
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
+      <el-table-column label="角色" align="center" width="120" :show-overflow-tooltip="true">
+        <template slot-scope="{row}">
+          <span>{{ row.roles }}</span>
+        </template>
+      </el-table-column>
       <el-table-column label="账号" align="center">
         <template slot-scope="{row}">
           <span>{{ row.username }}</span>
@@ -124,12 +129,32 @@
         </el-button>
       </div>
     </el-dialog>
+    <!-- 分配角色 -->
+    <el-dialog
+      title="分配角色"
+      :visible.sync="allocDialogVisible"
+      width="30%"
+    >
+      <el-select v-model="allocRoleIds" multiple placeholder="请选择" size="small" style="width: 80%">
+        <el-option
+          v-for="item in allRoleList"
+          :key="item.id"
+          :label="item.name"
+          :value="item.id"
+        />
+      </el-select>
+      <span slot="footer" class="dialog-footer">
+        <el-button size="small" @click="allocDialogVisible = false">取 消</el-button>
+        <el-button type="primary" size="small" @click="handleAllocDialogConfirm()">确 定</el-button>
+      </span>
+    </el-dialog>
 
   </div>
 </template>
 
 <script>
-import { adminList, updateAdminStatus, changeAdmin, deleteAdmin } from '@/api/ums/admin'
+import { adminList, updateAdminStatus, changeAdmin, deleteAdmin, accreditList, assignAdmin } from '@/api/ums/admin'
+import { roleList } from '@/api/ums/role'
 import { validEmail } from '@/utils/validate'
 
 import waves from '@/directive/waves' // waves directive
@@ -173,6 +198,12 @@ export default {
         update: '修改',
         create: '新增'
       },
+      // 分配权限
+      allocDialogVisible: false,
+      allocAdminId: 0,
+      allocRoleIds: [],
+      allRoleList: [],
+      // 修改、新增
       temp: {
         id: undefined,
         username: '',
@@ -303,7 +334,51 @@ export default {
       this.$nextTick(() => {
         this.$refs['dataForm'].clearValidate()
       })
+    },
+    // 分配角色
+    handleSelectRole(row) {
+      this.allocRoleIds = []
+      this.allocAdminId = row.id
+      this.allocDialogVisible = true
+      var query = {
+        pageIndex: 1,
+        pageSize: -1 // 查询全部
+      }
+      // 查询所有角色
+      roleList(query).then(response => {
+        this.allRoleList = response.list
+        // 查询已经授权角色
+        accreditList(this.allocAdminId).then(res => {
+          var list = res.list
+          for (const obj of list) {
+            this.allocRoleIds.push(obj.id)
+          }
+        })
+      })
+    },
+    handleAllocDialogConfirm() {
+      this.$confirm('是否要确认?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        var params = {
+          'adminId': this.allocAdminId,
+          'roleIds': this.allocRoleIds
+        }
+        console.log(params)
+        assignAdmin(params).then(response => {
+          this.$message({
+            message: '分配成功！',
+            type: 'success'
+          })
+          this.allocDialogVisible = false
+          // 刷新列表
+          this.getList()
+        })
+      })
     }
+
   }
 }
 </script>

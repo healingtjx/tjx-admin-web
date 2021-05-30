@@ -130,6 +130,12 @@ export const asyncRoutes = [
         component: () => import('@/views/sys/config/upload'),
         meta: { title: '文件上传', icon: 'config-upload' },
         hidden: true
+      }, {
+        path: 'log',
+        name: 'log',
+        component: () => import('@/views/sys/log/index'),
+        meta: { title: '系统日志', icon: 'config-log' },
+        hidden: true
       }
     ]
   },

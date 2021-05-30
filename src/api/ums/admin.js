@@ -9,6 +9,20 @@ export function adminList(query) {
   })
 }
 
+export function accreditList(adminId) {
+  return request({
+    url: '/ums/admin/accreditList?adminId=' + adminId,
+    method: 'get'
+  })
+}
+export function assignAdmin(data) {
+  return request({
+    url: '/ums/admin/assign',
+    method: 'post',
+    data
+  })
+}
+
 export function updateAdminStatus(data) {
   return request({
     url: '/ums/admin/updateStatus',
